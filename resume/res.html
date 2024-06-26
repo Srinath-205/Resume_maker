@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link rel="stylesheet" href="styles.css">
+    <a id="download-link" download="resume.txt"></a>
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Resume</h1>
+        </header>
+        <section id="personal-info">
+            <h2>Personal Information</h2>
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Your Name">
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Your Email">
+            </div>
+            <div>
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" placeholder="Your Phone Number">
+            </div>
+        </section>
+        <section id="education">
+            <h2>Education</h2>
+            <div>
+                <label for="degree">Degree:</label>
+                <input type="text" id="degree" name="degree" placeholder="Your Degree">
+            </div>
+            <div>
+                <label for="university">University:</label>
+                <input type="text" id="university" name="university" placeholder="University Name">
+            </div>
+            <div>
+                <label for="grad-year">Graduation Year:</label>
+                <input type="text" id="grad-year" name="grad-year" placeholder="Graduation Year">
+            </div>
+            <div>
+                <label for="university">school & slsc score</label>
+                
+                <input type="text" id="university" name="university" placeholder="school Name & SLSC score">
+            </div>
+        </section>
+        <section id="work-experience">
+            <h2>Academic</h2>
+            <div>
+                <label for="job-title">Projects:</label>
+                <input type="text" id="job-title" name="job-title" placeholder="Your project name">
+            </div>
+            <div>
+                <label for="company">Presentation:</label>
+                <input type="text" id="company" name="company" placeholder="Presentation name">
+            </div>
+            <div>
+                <label for="work-year">Achievements:</label>
+                <input type="text" id="work-year" name="work-year" placeholder="Prize won">
+            </div>
+        </section>
+        <section id="skills">
+            <h2>Skills</h2>
+            <textarea id="skills" name="skills" rows="4" placeholder="Enter your skills"></textarea>
+        </section>
+        <button id="download-btn">Download Resume</button>
+    </div>
+    <script>
+        document.getElementById("download-btn").addEventListener("click", function() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("phone").value;
+            var degree = document.getElementById("degree").value;
+            var university = document.getElementById("university").value;
+            var gradYear = document.getElementById("grad-year").value;
+            var jobTitle = document.getElementById("job-title").value;
+            var company = document.getElementById("company").value;
+            var workYear = document.getElementById("work-year").value;
+            var skills = document.getElementById("skills").value;
+    
+            var resumeContent = "Name: " + name + "\n" +
+                                "Email: " + email + "\n" +
+                                "Phone: " + phone + "\n\n" +
+                                "Education:\n" + degree + ", " + university + " (" + gradYear + ")\n\n" +
+                                "Work Experience:\n" + jobTitle + ", " + company + " (" + workYear + ")\n\n" +
+                                "Skills:\n" + skills;
+    
+            var blob = new Blob([resumeContent], { type: "text/plain" });
+    
+            var url = URL.createObjectURL(blob);
+    
+            var downloadLink = document.getElementById("download-link");
+            downloadLink.href = url;
+    
+            downloadLink.click();
+    
+            URL.revokeObjectURL(url);
+        });
+    </script>
+    
+</body>
+</html>
